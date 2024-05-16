@@ -1,19 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lbrahins <lbrahins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/16 13:18:01 by lbrahins          #+#    #+#             */
-/*   Updated: 2024/05/16 13:18:02 by lbrahins         ###   ########.fr       */
+/*   Created: 2024/05/16 16:33:17 by lbrahins          #+#    #+#             */
+/*   Updated: 2024/05/16 16:33:18 by lbrahins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strchr(const char *s, int c)
+#include "libft.h"
+
+void	*memcpy(void *dest, const void *src, size_t n)
 {
-	while (*s)
-		if (*s++ == c)
-			break ;
-	return ((char *)s);
+	int		i;
+	char	*pdest;
+	char	*psrc;
+
+	pdest = (char *)dest;
+	psrc = (char *)src;
+	while (i < n)
+		pdest[i] = psrc[i];
 }
