@@ -11,11 +11,11 @@
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
-# define LINFT_H
+# define LIBFT_H
 
 # include <stdio.h>
 # include <stdlib.h>
 
-int	ft_strlen(const char *str);
+
 
 #endif
