@@ -6,7 +6,7 @@
 /*   By: lbrahins <lbrahins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 16:48:23 by lbrahins          #+#    #+#             */
-/*   Updated: 2024/05/17 16:48:24 by lbrahins         ###   ########.fr       */
+/*   Updated: 2024/05/17 16:56:35 by lbrahins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,9 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 		return (NULL);
 	i = 0;
 	while (s[i])
+	{
 		result[i] = (*f)(i, s[i]);
+		i++;
+	}
 	return (result);
 }
