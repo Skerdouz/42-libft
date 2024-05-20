@@ -6,7 +6,7 @@
 /*   By: lbrahins <lbrahins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 12:55:39 by lbrahins          #+#    #+#             */
-/*   Updated: 2024/05/20 12:55:40 by lbrahins         ###   ########.fr       */
+/*   Updated: 2024/05/20 13:37:47 by lbrahins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,9 +68,10 @@ static void	ft_wordalloc(char const *s, char **array, char c)
 		if (in_word && (s[i] == c || s[i] == '\0'))
 		{
 			array[j] = malloc(((i - start) + 1) * sizeof(char));
-			ft_wordcpy(s, array[j], start, (i - 1));
+			if (!array[j])
+				return (NULL);
+			ft_wordcpy(s, array[j++], start, (i - 1));
 			in_word = 0;
-			j++;
 		}
 		i++;
 	}
@@ -83,6 +84,8 @@ char	**ft_split(char const *s, char c)
 
 	word_count = ft_wordcount(s, c);
 	array = malloc(word_count * sizeof(char *));
+	if (!array)
+		return (NULL);
 	ft_wordalloc(s, array, c);
 	return (array);
 }
