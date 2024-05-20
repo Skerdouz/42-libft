@@ -29,12 +29,15 @@ static int	ft_strncmp(const char *s1, const char *s2, size_t len)
 char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
 	size_t	i;
+	char	*str;
+
 
 	i = 0;
+	str = (char *)big;
 	if (!little)
-		return (big);
+		return (str);
 	while (*big)
 		if (ft_strncmp(big, little, len))
-			return (big);
+			return (str);
 	return (NULL);
 }
