@@ -6,7 +6,7 @@
 /*   By: lbrahins <lbrahins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 12:55:39 by lbrahins          #+#    #+#             */
-/*   Updated: 2024/05/20 13:37:47 by lbrahins         ###   ########.fr       */
+/*   Updated: 2024/05/20 13:58:46 by lbrahins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,15 +48,13 @@ static void	ft_wordcpy(char const *s, char *subarray, size_t start, size_t end)
 	subarray[i] = '\0';
 }
 
-static void	ft_wordalloc(char const *s, char **array, char c)
+static int	ft_wordalloc(char const *s, char **array, char c)
 {
 	size_t	i;
-	size_t	j;
 	size_t	in_word;
 	size_t	start;
 
 	i = 0;
-	j = 0;
 	in_word = 0;
 	while (s[i])
 	{
@@ -67,25 +65,42 @@ static void	ft_wordalloc(char const *s, char **array, char c)
 		}
 		if (in_word && (s[i] == c || s[i] == '\0'))
 		{
-			array[j] = malloc(((i - start) + 1) * sizeof(char));
-			if (!array[j])
-				return (NULL);
-			ft_wordcpy(s, array[j++], start, (i - 1));
+			*array = malloc(((i - start) + 1) * sizeof(char));
+			if (!*array)
+				return (0);
+			ft_wordcpy(s, *array, start, (i - 1));
 			in_word = 0;
 		}
 		i++;
 	}
+	return (1);
+}
+
+static void ft_freedom(char **array)
+{
+	while (*array)
+	{
+		free(*array);
+		array++;
+	}
+	free(array);
 }
 
 char	**ft_split(char const *s, char c)
 {
 	char	**array;
 	size_t	word_count;
+	int		ret;
 
 	word_count = ft_wordcount(s, c);
 	array = malloc(word_count * sizeof(char *));
 	if (!array)
 		return (NULL);
-	ft_wordalloc(s, array, c);
+	ret = ft_wordalloc(s, array, c);
+	if (!ret)
+	{
+		ft_freedom(array);
+		return (NULL);
+	}
 	return (array);
 }
