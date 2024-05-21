@@ -6,7 +6,7 @@
 /*   By: lbrahins <lbrahins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:58:52 by lbrahins          #+#    #+#             */
-/*   Updated: 2024/05/21 08:59:05 by lbrahins         ###   ########.fr       */
+/*   Updated: 2024/05/21 09:05:00 by lbrahins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,10 @@ static int	ft_inset(char const c, char const *set)
 	return (0);
 }
 
-static char	*ft_strinit(char *src, char *dest, int start, int end)
+static char	*ft_strinit(const char *src, int start, int end)
 {
 	size_t	i;
+	char	*dest;
 
 	i = 0;
 	dest = malloc ((end - start) * sizeof(char));
@@ -33,6 +34,7 @@ static char	*ft_strinit(char *src, char *dest, int start, int end)
 		return (NULL);
 	while (start <= end)
 		dest[i++] = src[start++];
+	dest[i] = '\0';
 	return (dest);
 }
 
@@ -59,6 +61,6 @@ char	*ft_strtrim(char const *s1, char const *set)
 		else
 			break ;
 	}
-	str = ft_strinit(s1, str, i, j);
+	str = ft_strinit(s1, i, j);
 	return (str);
 }

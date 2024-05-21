@@ -6,7 +6,7 @@
 /*   By: lbrahins <lbrahins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 16:33:17 by lbrahins          #+#    #+#             */
-/*   Updated: 2024/05/16 17:06:11 by lbrahins         ###   ########.fr       */
+/*   Updated: 2024/05/21 09:07:38 by lbrahins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 	char	*pdest;
 	char	*psrc;
 
+	if (!dest && !src)
+		return (NULL);
 	pdest = (char *)dest;
 	psrc = (char *)src;
 	i = 0;
