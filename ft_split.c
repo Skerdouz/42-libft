@@ -5,102 +5,92 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: lbrahins <lbrahins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/20 12:55:39 by lbrahins          #+#    #+#             */
-/*   Updated: 2024/05/20 13:58:46 by lbrahins         ###   ########.fr       */
+/*   Created: 2024/05/21 16:49:39 by lbrahins          #+#    #+#             */
+/*   Updated: 2024/05/21 16:49:40 by lbrahins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static	size_t	ft_wordcount(char const *s, char c)
+//TODO: Fix this function
+
+static int malloc_init(char **array, int pos, int size)
 {
-	size_t	counter;
-	size_t	in_word;
-	size_t	i;
+	int	i;
+
+	i = 0;
+	array[pos] = malloc(size * sizeof(char));
+	if (!array[pos])
+	{
+		while (i < pos)
+			free(array[i++]);
+		free(array);
+		return (1);
+	}
+	return (0);
+}
+
+static int array_init(char **array, const char *s, char delimiter)
+{
+	int	i;
+	int	size;
+
+	i = 0;
+	while (*s)
+	{
+		size = 0;
+		while (*s == delimiter && *s)
+			s++;
+		while (*s != delimiter && *s)
+		{
+			s++;
+			size++;
+		}
+		if (size)
+		{
+			if (malloc_init(array, i, size + 1))
+				return (1);
+			ft_strlcpy(array[i], s - size, size + 1);
+			i++;
+		}
+	}
+	return (0);
+}
+
+static int count_words(const char *str, char delimiter)
+{
+	int	in_word;
+	int	counter;
 
 	in_word = 0;
 	counter = 0;
-	i = 0;
-	while (s[i])
+	while (*str)
 	{
-		if (!in_word && s[i] != c)
+		if (*str != delimiter && !in_word)
 		{
-			counter++;
 			in_word = 1;
-		}
-		if (in_word && (s[i] == c || s[i] == '\0'))
-		{
 			counter++;
-			in_word = 0;
 		}
-		i++;
+		if (*str == delimiter && in_word)
+			in_word = 0;
+		str++;		
 	}
 	return (counter);
 }
 
-static void	ft_wordcpy(char const *s, char *subarray, size_t start, size_t end)
-{
-	size_t	i;
-
-	i = 0;
-	while (start <= end)
-		subarray[i++] = s[start++];
-	subarray[i] = '\0';
-}
-
-static int	ft_wordalloc(char const *s, char **array, char c)
-{
-	size_t	i;
-	size_t	in_word;
-	size_t	start;
-
-	i = 0;
-	in_word = 0;
-	while (s[i])
-	{
-		if (!in_word && s[i] != c)
-		{
-			start = i;
-			in_word = 1;
-		}
-		if (in_word && (s[i] == c || s[i] == '\0'))
-		{
-			*array = malloc(((i - start) + 1) * sizeof(char));
-			if (!*array)
-				return (0);
-			ft_wordcpy(s, *array, start, (i - 1));
-			in_word = 0;
-		}
-		i++;
-	}
-	return (1);
-}
-
-static void ft_freedom(char **array)
-{
-	while (*array)
-	{
-		free(*array);
-		array++;
-	}
-	free(array);
-}
-
-char	**ft_split(char const *s, char c)
+char	**ft_split(const char *s, char c)
 {
 	char	**array;
 	size_t	word_count;
-	int		ret;
 
-	word_count = ft_wordcount(s, c);
-	array = malloc(word_count * sizeof(char *));
+	if (!s)
+		return (NULL);
+	word_count = count_words(s, c);
+	array = malloc((word_count + 1) * sizeof(char *));
 	if (!array)
 		return (NULL);
-	ret = ft_wordalloc(s, array, c);
-	if (!ret)
-	{
-		ft_freedom(array);
+	array[word_count] = NULL;
+	if (array_init(array, s, c))
 		return (NULL);
-	}
 	return (array);
 }

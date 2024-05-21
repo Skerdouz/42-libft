@@ -6,7 +6,7 @@
 /*   By: lbrahins <lbrahins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 10:37:14 by lbrahins          #+#    #+#             */
-/*   Updated: 2024/05/20 13:45:46 by lbrahins         ###   ########.fr       */
+/*   Updated: 2024/05/21 11:25:42 by lbrahins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	*memmove(void *dest, const void *src, size_t n)
 {
-	size_t		i;
+	size_t	i;
 	char	*pdest;
 	char	*psrc;
 

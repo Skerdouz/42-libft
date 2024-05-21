@@ -6,7 +6,7 @@
 /*   By: lbrahins <lbrahins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 09:08:15 by lbrahins          #+#    #+#             */
-/*   Updated: 2024/05/20 09:08:16 by lbrahins         ###   ########.fr       */
+/*   Updated: 2024/05/21 10:40:09 by lbrahins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ static int	ft_sizecalc(long nb, int neg)
 	int	size;
 
 	size = 0;
+	if (!nb)
+		return (1);
 	if (neg)
 		size++;
 	while (nb)
@@ -29,6 +31,13 @@ static int	ft_sizecalc(long nb, int neg)
 
 static void	ft_convert(char *str, long nb, int size, int neg)
 {
+	
+	if (!nb)
+	{
+		str[0] = '0';
+		str[1] = '\0';
+		return ;
+	}
 	str[size] = '\0';
 	while (size > 0)
 	{

@@ -6,7 +6,7 @@
 /*   By: lbrahins <lbrahins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:58:52 by lbrahins          #+#    #+#             */
-/*   Updated: 2024/05/21 09:05:00 by lbrahins         ###   ########.fr       */
+/*   Updated: 2024/05/21 11:58:53 by lbrahins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static char	*ft_strinit(const char *src, int start, int end)
 	char	*dest;
 
 	i = 0;
-	dest = malloc ((end - start) * sizeof(char));
+	dest = malloc ((end - start + 1) * sizeof(char));
 	if (!dest)
 		return (NULL);
 	while (start <= end)
