@@ -5,46 +5,42 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: lbrahins <lbrahins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/16 11:08:18 by lbrahins          #+#    #+#             */
-/*   Updated: 2024/05/16 11:08:18 by lbrahins         ###   ########.fr       */
+/*   Created: 2024/05/22 11:29:30 by lbrahins          #+#    #+#             */
+/*   Updated: 2024/05/22 11:30:15 by lbrahins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	ft_strncmp(const char *s1, const char *s2, unsigned int n)
+static int	occsearch(const char *big, const char *little, size_t len)
 {
-	unsigned int	i;
+	size_t	i;
 
-	if (n == 0)
-		return (0);
 	i = 0;
-	while (s1[i] == s2[i] && s1[i])
+	while (big[i] && little[i] && i < len)
 	{
-		if (i < (n - 1))
-			i++;
-		else
+		if (big[i] != little[i])
 			return (0);
+		i++;
 	}
-	return (s1[i] - s2[i]);
+	if (!little[i])
+		return (1);
+	return (0);
 }
 
 char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
-	size_t	little_len;
-	const char *ptr;
+	size_t	i;
 
-	if (!big && !len)
-		return (0);
-	if (!little[0] || little == big)
+	i = 0;
+	if (!little[0])
 		return ((char *)big);
-	little_len = ft_strlen(little);
-	while (len >= little_len && (ptr = ft_memchr(big, little[0], len)))
+	while (big[i] && i < len)
 	{
-		if (!ft_strncmp(ptr, little, little_len))
-			return ((char *)ptr);
-		len -= (ptr - big) + 1;
-		big = ptr + 1;
+		if (big[i] == little[0])
+			if (occsearch(&big[i], little, len - i))
+				return ((char *)big + i);
+		i++;
 	}
-	return (0);
+	return (NULL);
 }

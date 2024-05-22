@@ -6,15 +6,13 @@
 /*   By: lbrahins <lbrahins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 16:49:39 by lbrahins          #+#    #+#             */
-/*   Updated: 2024/05/21 16:49:40 by lbrahins         ###   ########.fr       */
+/*   Updated: 2024/05/22 11:35:02 by lbrahins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-//TODO: Fix this function
-
-static int malloc_init(char **array, int pos, int size)
+static int	malloc_init(char **array, int pos, int size)
 {
 	int	i;
 
@@ -30,7 +28,7 @@ static int malloc_init(char **array, int pos, int size)
 	return (0);
 }
 
-static int array_init(char **array, const char *s, char delimiter)
+static int	array_init(char **array, const char *s, char delimiter)
 {
 	int	i;
 	int	size;
@@ -57,7 +55,7 @@ static int array_init(char **array, const char *s, char delimiter)
 	return (0);
 }
 
-static int count_words(const char *str, char delimiter)
+static int	count_words(const char *str, char delimiter)
 {
 	int	in_word;
 	int	counter;
@@ -73,7 +71,7 @@ static int count_words(const char *str, char delimiter)
 		}
 		if (*str == delimiter && in_word)
 			in_word = 0;
-		str++;		
+		str++;
 	}
 	return (counter);
 }

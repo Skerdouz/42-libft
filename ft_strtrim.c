@@ -6,61 +6,35 @@
 /*   By: lbrahins <lbrahins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:58:52 by lbrahins          #+#    #+#             */
-/*   Updated: 2024/05/21 11:58:53 by lbrahins         ###   ########.fr       */
+/*   Updated: 2024/05/22 11:57:57 by lbrahins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	ft_inset(char const c, char const *set)
+static int	inset(const char c, const char *set)
 {
-	size_t	i;
-
-	i = 0;
-	while (set[i])
-		if (set[i++] == c)
+	while (*set)
+	{
+		if (c == *set)
 			return (1);
+		set++;
+	}
 	return (0);
 }
 
-static char	*ft_strinit(const char *src, int start, int end)
+char	*ft_strtrim(const char *s1, const char *set)
 {
-	size_t	i;
-	char	*dest;
-
-	i = 0;
-	dest = malloc ((end - start + 1) * sizeof(char));
-	if (!dest)
+	size_t	first;
+	size_t	last;
+	
+	if (!s1 || !set)
 		return (NULL);
-	while (start <= end)
-		dest[i++] = src[start++];
-	dest[i] = '\0';
-	return (dest);
-}
-
-char	*ft_strtrim(char const *s1, char const *set)
-{
-	size_t	i;
-	size_t	j;
-	char	*str;
-
-	i = 0;
-	j = 0;
-	while (s1[i])
-	{
-		if (ft_inset(s1[i], set))
-			i++;
-		else
-			break ;
-	}
-	j = ft_strlen(s1) - 1;
-	while (j)
-	{
-		if (ft_inset(s1[j], set))
-			j--;
-		else
-			break ;
-	}
-	str = ft_strinit(s1, i, j);
-	return (str);
+	first = 0;
+	last = ft_strlen(s1);
+	while (inset(s1[first], set))
+		first++;
+	while (inset(s1[last - 1], set))
+		last--;
+	return (ft_substr(s1, first, last - first));
 }
