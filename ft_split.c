@@ -6,7 +6,7 @@
 /*   By: lbrahins <lbrahins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 16:49:39 by lbrahins          #+#    #+#             */
-/*   Updated: 2024/05/22 11:35:02 by lbrahins         ###   ########.fr       */
+/*   Updated: 2024/05/22 17:13:11 by lbrahins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static int	malloc_init(char **array, int pos, int size)
 	return (0);
 }
 
-static int	array_init(char **array, const char *s, char delimiter)
+static int	array_init(char **array, const char *s, char c)
 {
 	int	i;
 	int	size;
@@ -37,9 +37,9 @@ static int	array_init(char **array, const char *s, char delimiter)
 	while (*s)
 	{
 		size = 0;
-		while (*s == delimiter && *s)
+		while (*s == c && *s)
 			s++;
-		while (*s != delimiter && *s)
+		while (*s != c && *s)
 		{
 			s++;
 			size++;
@@ -55,7 +55,7 @@ static int	array_init(char **array, const char *s, char delimiter)
 	return (0);
 }
 
-static int	count_words(const char *str, char delimiter)
+static int	count_words(const char *str, char c)
 {
 	int	in_word;
 	int	counter;
@@ -64,12 +64,12 @@ static int	count_words(const char *str, char delimiter)
 	counter = 0;
 	while (*str)
 	{
-		if (*str != delimiter && !in_word)
+		if (*str != c && !in_word)
 		{
 			in_word = 1;
 			counter++;
 		}
-		if (*str == delimiter && in_word)
+		if (*str == c && in_word)
 			in_word = 0;
 		str++;
 	}
