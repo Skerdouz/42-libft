@@ -6,7 +6,7 @@
 /*   By: lbrahins <lbrahins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 13:18:01 by lbrahins          #+#    #+#             */
-/*   Updated: 2024/05/22 13:04:14 by lbrahins         ###   ########.fr       */
+/*   Updated: 2024/05/22 14:00:27 by lbrahins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 char	*ft_strchr(const char *s, int c)
 {
 	size_t	i;
-	char chr;
+	char	chr;
 
 	chr = c;
 	i = 0;

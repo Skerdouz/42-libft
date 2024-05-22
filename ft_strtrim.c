@@ -6,7 +6,7 @@
 /*   By: lbrahins <lbrahins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 08:58:52 by lbrahins          #+#    #+#             */
-/*   Updated: 2024/05/22 11:57:57 by lbrahins         ###   ########.fr       */
+/*   Updated: 2024/05/22 13:47:06 by lbrahins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ char	*ft_strtrim(const char *s1, const char *set)
 {
 	size_t	first;
 	size_t	last;
-	
+
 	if (!s1 || !set)
 		return (NULL);
 	first = 0;
