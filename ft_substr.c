@@ -6,7 +6,7 @@
 /*   By: lbrahins <lbrahins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 17:15:16 by lbrahins          #+#    #+#             */
-/*   Updated: 2024/05/22 16:23:37 by lbrahins         ###   ########.fr       */
+/*   Updated: 2024/05/22 17:07:23 by lbrahins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	result = malloc (len + 1 * sizeof(char));
 	if (!result)
 		return (NULL);
-	while (len-- && start < ft_strlen(s))
+	while (i < len && start < ft_strlen(s))
 		result[i++] = s[start++];
 	result[i] = '\0';
 	return (result);
