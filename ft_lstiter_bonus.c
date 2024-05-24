@@ -6,7 +6,7 @@
 /*   By: lbrahins <lbrahins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 14:48:04 by lbrahins          #+#    #+#             */
-/*   Updated: 2024/05/23 14:48:05 by lbrahins         ###   ########.fr       */
+/*   Updated: 2024/05/24 10:07:20 by lbrahins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	ft_lstiter(t_list *lst, void (*f)(void *))
 {
 	if (!lst)
-		return (NULL);
+		return ;
 	while (lst)
 	{
 		(*f)(lst->content);

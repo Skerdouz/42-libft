@@ -6,7 +6,7 @@
 /*   By: lbrahins <lbrahins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 10:56:40 by lbrahins          #+#    #+#             */
-/*   Updated: 2024/05/23 10:56:41 by lbrahins         ###   ########.fr       */
+/*   Updated: 2024/05/24 09:52:47 by lbrahins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,6 @@
 
 void	ft_lstadd_front(t_list **lst, t_list *new)
 {
-	new->next = *lst; 
-	*lst = new; 
+	new->next = *lst;
+	*lst = new;
 }
