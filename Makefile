@@ -25,8 +25,8 @@ ${NAME}: ${OBJS}
 
 all: ${NAME}
 
-# bonus: ${OBJS} ${OBJS_BONUS}
-# 	ar rcs ${NAME} ${OBJS} ${OBJS_BONUS}
+bonus: ${OBJS} ${OBJS_BONUS}
+	ar rcs ${NAME} ${OBJS} ${OBJS_BONUS}
 
 clean:
 	rm -f ${OBJS} ${OBJS_BONUS}
@@ -36,4 +36,4 @@ fclean: clean
 
 re:		fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re bonus
