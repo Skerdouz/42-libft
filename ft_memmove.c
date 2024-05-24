@@ -6,7 +6,7 @@
 /*   By: lbrahins <lbrahins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 10:37:14 by lbrahins          #+#    #+#             */
-/*   Updated: 2024/05/22 16:40:31 by lbrahins         ###   ########.fr       */
+/*   Updated: 2024/05/24 10:41:17 by lbrahins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 	i = 0;
 	pdest = (char *)dest;
 	psrc = (char *)src;
+	if (!pdest && !psrc)
+		return (NULL);
 	if (pdest > psrc)
 		while (n-- > 0)
 			pdest[n] = psrc[n];
